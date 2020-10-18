@@ -6,9 +6,7 @@ import QtQuick.Controls 2.5
 Rectangle {
     anchors.horizontalCenter: parent.horizontalCenter
     anchors.bottom: parent.bottom
-    opacity: 0.4
-
-    property var volumeSlider: 1
+    opacity: 0.1
 
     // Кнопки управления воспроизведением
     Rectangle {
@@ -18,7 +16,6 @@ Rectangle {
         width: 59
         height: 59
         color: "#ffffff"
-        opacity: pauseBtn.opacity
         
         radius: 100
         
@@ -43,7 +40,6 @@ Rectangle {
         width: 59
         height: 59
         color: "#ffffff"
-        opacity: 0.2
         radius: 10
         
         MouseArea {
@@ -74,7 +70,6 @@ Rectangle {
         width: 59
         height: 59
         color: "#ffffff"
-        opacity: pauseBtn.opacity
         radius: 100
         
         MouseArea {
@@ -97,6 +92,7 @@ Rectangle {
 
     // Слайдер регулировки громкости
     Slider {
+        id: volumeSlider
         anchors.verticalCenter: nextBtn.verticalCenter
         x: nextBtn.x + nextBtn.width + 15
         from: 0
@@ -107,6 +103,19 @@ Rectangle {
         }
         Component.onCompleted: {
             video.volume = value
+        }
+    }
+
+    // Полоска видео
+    Slider {
+        id: timeSlider
+        anchors.verticalCenter: backBtn.verticalCenter
+        x: backBtn.x - this.width - 15
+        from: 0
+        to: video.duration
+        value: video.position
+        onMoved: {
+            video.seek(value)
         }
     }
 }

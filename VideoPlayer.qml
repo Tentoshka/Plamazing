@@ -3,7 +3,7 @@ import QtQuick.Window 2.14
 import QtMultimedia 5.12
 import QtQuick.Controls 2.5
 
-Video {    
+Video {
     MouseArea {
         anchors.fill: parent
         onClicked: {
