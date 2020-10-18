@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>VideoPlayer.qml</file>
+        <file>Menu.qml</file>
     </qresource>
 </RCC>
