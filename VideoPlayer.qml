@@ -16,4 +16,6 @@ Video {
     Keys.onSpacePressed: video.playbackState === MediaPlayer.PlayingState ? video.pause() : video.play()
     Keys.onLeftPressed: video.seek(video.position - 5000)
     Keys.onRightPressed: video.seek(video.position + 5000)
+    Keys.onUpPressed: video.volume += 0.1
+    Keys.onDownPressed: video.volume -= 0.1
 }

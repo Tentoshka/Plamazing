@@ -36,7 +36,7 @@ Rectangle {
     Rectangle {
         id: pauseBtn
         x: parent.width / 2 - this.width / 2
-        y: parent.height - 8 - this.height
+        y: parent.height - 8 - volumeSlider.height - 8 - this.height
         width: 59
         height: 59
         color: "#ffffff"
@@ -93,8 +93,8 @@ Rectangle {
     // Слайдер регулировки громкости
     Slider {
         id: volumeSlider
-        anchors.verticalCenter: nextBtn.verticalCenter
-        x: nextBtn.x + nextBtn.width + 15
+        y: parent.height - 8 - this.height
+        x: video.width - 8 - this.width - parent.x
         from: 0
         to: 1
         value: 1
@@ -109,8 +109,9 @@ Rectangle {
     // Полоска видео
     Slider {
         id: timeSlider
-        anchors.verticalCenter: backBtn.verticalCenter
-        x: backBtn.x - this.width - 15
+        y: volumeSlider.y
+        anchors.right: volumeSlider.left
+        width: window.width - 16 - 8 - volumeSlider.width
         from: 0
         to: video.duration
         value: video.position
